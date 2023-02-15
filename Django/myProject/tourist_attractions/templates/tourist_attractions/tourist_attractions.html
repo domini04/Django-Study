@@ -1,0 +1,32 @@
+{% extends 'tourist_attractions/base.html' %}
+{% load static %}
+
+{% comment %} add title block {% endcomment %}
+{% block title %}
+<link rel="stylesheet" href="{% static 'tourist_attractions/css/attractions.css' %}">
+{{ block.super }}
+{% endblock %}
+
+{% comment %} add head block {% endcomment %}
+{% block head %}
+{{ block.super }}
+{% endblock %}
+
+{% comment %} add body block {% endcomment %}
+{% block body %}
+<h1>This is the attractions page</h1>
+  <table>
+    <tr>
+      <th>Attraction</th>
+      <th>Location</th>
+      <th>Rating</th>
+    </tr>
+    {% for attraction in attractions|dictsortreversed:"rating" %}
+    <tr>
+      <td>{{ attraction.name }}</td>
+      <td>{{ attraction.location }}</td>
+      <td>{{ attraction.rating }}</td>
+    </tr>
+    {% endfor %}
+{{ block.super }}
+{% endblock %}

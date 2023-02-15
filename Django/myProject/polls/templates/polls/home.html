@@ -1,10 +1,27 @@
 {% extends 'polls/base.html' %}
 {% load static %}
-
+<link rel="stylesheet" href="{% static 'polls/style.css' %}">
 {% block head %}
-<link rel="stylesheet" href="{% static 'vetoffice/style.css' %}">
 {% endblock %}
 
 {% block content %}
-<p>Welcome!</p>
+<p>Welcome! {{name}}</p>
+  {% comment %} DTL if-elif-else-endif statements {% endcomment %}
+  {% if pet.name == 'Fido' %}
+    <p>Hi Fido!</p>
+  {% elif pet.name == 'Spot' %}
+    <p>Hi Spot!</p>
+  {% else %}
+    <p>Hi {{pet.name}}!</p>
+  {% endif %}
+
+  {% comment %} DTL for loop {% endcomment %}
+  <p>Here are your appointments:</p>
+  <ul>
+    {% comment %} use dictsort to sort appointments {% endcomment %}
+    {% for appointment, date in appointments%}
+      <li>{{appointment|upper}}</li>
+      <li>{{date}}</li>
+    {% endfor %}
+  </ul>
 {% endblock %}

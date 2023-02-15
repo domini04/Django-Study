@@ -2,9 +2,13 @@
 <head>
   {% block head %}
   {% endblock %}
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'polls/style.css' %}">
 </head>
 
 <body>
+  <a href="{% url 'home' %}">Home</a> 
+  <a href="{% url 'tourist_attractions' %}">Tourist Attractions</a>
   <h1>Welcome to Vet Office!</h1>
   {% block content %}
   {% endblock %}
